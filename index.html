@@ -22,7 +22,22 @@ const cities = [];
 fetch(endpoint)
   .then(blob => blob.json())
   .then(data => cities.push(...data)) //Using ... is a spared so each item is pushed in as an individual array
+  
 
+function findMatches(wordToMatch, cities) {
+  return cities.filter(place => {
+    // find out if city/ starte matches the searched item
+    const regex = new RegExp(wordToMatch, 'gi'); //g is global(searched through all) and i is insensitive (to downcase/ upcase)
+    return place.city.match(regex) || place.state.match(regex)
+  })
+}
+
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches)
+searchInput.addEventListener('keyup', displayMatches)
 
 </script>
 </body>
