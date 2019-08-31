@@ -26,7 +26,7 @@ fetch(endpoint)
 
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
-    // find out if city/ starte matches the searched item
+    // find out if city matches the searched item
     const regex = new RegExp(wordToMatch, 'gi'); //g is global(searched through all) and i is insensitive (to downcase/ upcase)
     return place.city.match(regex) || place.state.match(regex)
   })
